@@ -1,6 +1,5 @@
 package io.github.rodrigoweich.fincontrolapi.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.github.rodrigoweich.fincontrolapi.model.enums.MovementEnum;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,17 +16,14 @@ public class Movement {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
-//    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-//    @OneToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "user_id")
-//    private User user;
+    private Long id;
 
     @Column
-    private Integer user_id;
+    @ManyToOne(optional = false)
+    private User user;
 
     @Column
+    @Enumerated(EnumType.STRING)
     private MovementEnum movement;
 
 }

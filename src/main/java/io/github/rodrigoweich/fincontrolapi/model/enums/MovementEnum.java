@@ -7,8 +7,9 @@ import lombok.Getter;
 @Getter
 public enum MovementEnum {
 
-    INSERT("INSERT MOVEMENT"), REMOVE("REMOVE MOVEMENT");
+    INSERT("INSERT_MOVEMENT"),
+    REMOVE("REMOVE_MOVEMENT");
 
-    private String description;
+    private final String description;
 
 }

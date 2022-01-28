@@ -18,13 +18,15 @@ public class UserService {
             Integer page,
             Integer size
     ) {
-        Sort sort = Sort.by(Sort.Direction.ASC, "id");
-        PageRequest pageRequest = PageRequest.of(page, size, sort);
-        return userRepository.findAll(pageRequest);
+        return userRepository.findAll(generatePageRequest(page,size));
     }
 
     public User save(User user) {
         return userRepository.save(user);
     }
 
+    private PageRequest generatePageRequest(Integer page, Integer size){
+        Sort sort = Sort.by(Sort.Direction.ASC, "id");
+        return PageRequest.of(page, size, sort);
+    }
 }
