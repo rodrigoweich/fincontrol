@@ -18,8 +18,7 @@ public class Movement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
-    @ManyToOne(optional = false)
+    @ManyToOne
     private User user;
 
     @Column
