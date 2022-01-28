@@ -1,7 +1,7 @@
-package io.github.rodrigoweich.fincontrolapi.model.service;
+package io.github.rodrigoweich.fincontrolapi.service;
 
-import io.github.rodrigoweich.fincontrolapi.model.entity.User;
-import io.github.rodrigoweich.fincontrolapi.model.repository.UserRepository;
+import io.github.rodrigoweich.fincontrolapi.entity.User;
+import io.github.rodrigoweich.fincontrolapi.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

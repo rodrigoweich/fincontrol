@@ -1,10 +1,10 @@
 package io.github.rodrigoweich.fincontrolapi;
 
-import io.github.rodrigoweich.fincontrolapi.model.entity.Movement;
-import io.github.rodrigoweich.fincontrolapi.model.entity.User;
-import io.github.rodrigoweich.fincontrolapi.model.enums.MovementEnum;
-import io.github.rodrigoweich.fincontrolapi.model.repository.MovementRepository;
-import io.github.rodrigoweich.fincontrolapi.model.repository.UserRepository;
+import io.github.rodrigoweich.fincontrolapi.entity.Movement;
+import io.github.rodrigoweich.fincontrolapi.entity.User;
+import io.github.rodrigoweich.fincontrolapi.enums.MovementEnum;
+import io.github.rodrigoweich.fincontrolapi.repository.MovementRepository;
+import io.github.rodrigoweich.fincontrolapi.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

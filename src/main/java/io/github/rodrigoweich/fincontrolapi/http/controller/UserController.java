@@ -1,7 +1,7 @@
-package io.github.rodrigoweich.fincontrolapi.model.entity.api.rest;
+package io.github.rodrigoweich.fincontrolapi.http.controller;
 
-import io.github.rodrigoweich.fincontrolapi.model.entity.User;
-import io.github.rodrigoweich.fincontrolapi.model.service.UserService;
+import io.github.rodrigoweich.fincontrolapi.entity.User;
+import io.github.rodrigoweich.fincontrolapi.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;

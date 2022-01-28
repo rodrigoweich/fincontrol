@@ -1,4 +1,4 @@
-package io.github.rodrigoweich.fincontrolapi.model.entity;
+package io.github.rodrigoweich.fincontrolapi.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

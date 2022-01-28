@@ -1,6 +1,6 @@
-package io.github.rodrigoweich.fincontrolapi.model.entity;
+package io.github.rodrigoweich.fincontrolapi.entity;
 
-import io.github.rodrigoweich.fincontrolapi.model.enums.MovementEnum;
+import io.github.rodrigoweich.fincontrolapi.enums.MovementEnum;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

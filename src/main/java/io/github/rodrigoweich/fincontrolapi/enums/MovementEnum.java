@@ -1,4 +1,4 @@
-package io.github.rodrigoweich.fincontrolapi.model.enums;
+package io.github.rodrigoweich.fincontrolapi.enums;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
