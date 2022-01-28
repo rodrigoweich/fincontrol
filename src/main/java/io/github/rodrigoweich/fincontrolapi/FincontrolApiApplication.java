@@ -25,12 +25,12 @@ public class FincontrolApiApplication {
 			userRepository.save(user);
 
 			Movement movement = new Movement();
-			movement.setUser_id(user.getId());
+			movement.setUser(user);
 			movement.setMovement(MovementEnum.INSERT);
 			movementRepository.save(movement);
 
 			Movement movement1 = new Movement();
-			movement1.setUser_id(user.getId());
+			movement1.setUser(user);
 			movement1.setMovement(MovementEnum.REMOVE);
 			movementRepository.save(movement1);
 		};

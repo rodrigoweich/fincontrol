@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/api/users")
@@ -15,7 +16,15 @@ public class UserController {
 
     private final UserService userService;
 
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public User findUserById(@PathVariable Long id) {
+        return userService.findUserById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found."));
+    }
+
     @GetMapping
+    @ResponseStatus(HttpStatus.OK)
     public Page<User> list (
             @RequestParam(value = "page", defaultValue = "0") Integer page,
             @RequestParam(value = "size", defaultValue = "10") Integer size
@@ -29,12 +38,21 @@ public class UserController {
         return userService.save(user);
     }
 
-//    @PutMapping("{id}")
-//    public User update(@PathVariable Integer id, @RequestBody User user) {
-//        return userRepository.findById(id).map(data -> {
-//            data.setName(user.getName());
-//            data.setSuperUser(user.getSuperUser());
-//            return userRepository.save(data);
-//        });
-//    }
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void update(@PathVariable Long id, @RequestBody User user) {
+        userService.findUserById(id).map(oldUser -> {
+            userService.update(id, user);
+            return Void.TYPE;
+        }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found."));
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Long id){
+        userService.findUserById(id).map(user -> {
+            userService.delete(user.getId());
+            return Void.TYPE;
+        }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found."));
+    }
 }

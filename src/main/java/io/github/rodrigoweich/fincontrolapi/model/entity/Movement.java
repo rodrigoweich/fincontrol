@@ -1,12 +1,13 @@
 package io.github.rodrigoweich.fincontrolapi.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.github.rodrigoweich.fincontrolapi.model.enums.MovementEnum;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Table(name = "movements")
 @Entity
@@ -17,17 +18,22 @@ public class Movement {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
-//    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-//    @OneToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "user_id")
-//    private User user;
+    @ManyToOne
+    private User user;
 
     @Column
-    private Integer user_id;
-
-    @Column
+    @Enumerated(EnumType.STRING)
     private MovementEnum movement;
+
+    @CreatedDate
+    @Column
+    private Date createdAt;
+
+    @PrePersist
+    public void prePersist() {
+        createdAt = new Date();
+    }
 
 }

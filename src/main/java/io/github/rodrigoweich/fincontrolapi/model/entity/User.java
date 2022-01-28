@@ -1,6 +1,5 @@
 package io.github.rodrigoweich.fincontrolapi.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,18 +15,13 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column
     private String name;
 
     @Column
     private Boolean superUser;
-
-//    @JsonIgnore
-//    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL,
-//            fetch = FetchType.LAZY, optional = true)
-//    private Movement movement;
 
     @PrePersist
     public void prePersist() {

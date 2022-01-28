@@ -8,11 +8,17 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class UserService {
 
     private final UserRepository userRepository;
+
+    public Optional<User> findUserById(Long id) {
+        return userRepository.findById(id);
+    }
 
     public Page<User> list(
             Integer page,
@@ -25,6 +31,18 @@ public class UserService {
 
     public User save(User user) {
         return userRepository.save(user);
+    }
+
+    public Optional<User> update(Long id, User user) {
+        return userRepository.findById(id).map(user1 -> {
+            user1.setName(user.getName());
+            user1.setSuperUser(user.getSuperUser());
+            return userRepository.save(user1);
+        });
+    }
+
+    public void delete(Long id) {
+        userRepository.deleteById(id);
     }
 
 }
