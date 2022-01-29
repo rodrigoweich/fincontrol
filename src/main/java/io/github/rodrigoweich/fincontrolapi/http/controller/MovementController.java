@@ -9,6 +9,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/movements")
 @RequiredArgsConstructor
@@ -31,5 +33,10 @@ public class MovementController {
     @ResponseStatus(HttpStatus.CREATED)
     public Movement save(@RequestBody Movement movement) {
         return movementRepository.save(movement);
+    }
+
+    @GetMapping("/date")
+    public List<Movement> findAllByRegDateBetween(@RequestParam String start, @RequestParam String end) {
+        return movementRepository.findAllByRegDateBetween(start, end);
     }
 }
