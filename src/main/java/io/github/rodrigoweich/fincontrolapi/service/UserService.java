@@ -1,20 +1,26 @@
 package io.github.rodrigoweich.fincontrolapi.service;
 
-import io.github.rodrigoweich.fincontrolapi.entity.User;
-import io.github.rodrigoweich.fincontrolapi.repository.UserRepository;
-import lombok.RequiredArgsConstructor;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import io.github.rodrigoweich.fincontrolapi.entity.User;
+import io.github.rodrigoweich.fincontrolapi.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
 public class UserService {
 
     private final UserRepository userRepository;
+
+    public List<User> findUserByLastname(String lastname) {
+        return userRepository.findByLastname(lastname);
+    }
 
     public Optional<User> findUserById(Long id) {
         return userRepository.findById(id);
