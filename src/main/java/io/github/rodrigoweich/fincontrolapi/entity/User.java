@@ -20,11 +20,4 @@ public class User {
     @Column
     private String name;
 
-    @Column
-    private Boolean superUser;
-
-    @PrePersist
-    public void prePersist() {
-        superUser = false;
-    }
 }

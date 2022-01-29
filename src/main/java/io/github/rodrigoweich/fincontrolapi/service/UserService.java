@@ -42,7 +42,6 @@ public class UserService {
     public Optional<User> update(Long id, User user) {
         return userRepository.findById(id).map(user1 -> {
             user1.setName(user.getName());
-            user1.setSuperUser(user.getSuperUser());
             return userRepository.save(user1);
         });
     }
