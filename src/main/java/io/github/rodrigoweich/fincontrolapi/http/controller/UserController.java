@@ -2,6 +2,7 @@ package io.github.rodrigoweich.fincontrolapi.http.controller;
 
 import java.util.List;
 
+import io.github.rodrigoweich.fincontrolapi.repository.UserRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -31,9 +32,8 @@ public class UserController {
 
     @GetMapping("/lastname")
     @ResponseStatus(HttpStatus.OK)
-    public List<User> findByLastname(@RequestBody String lastname) {
-        System.out.println(lastname);
-        return userService.findUserByLastname(lastname);
+    public List<User> findByLastname(@RequestParam String name) {
+        return userService.findByNameContainingIgnoreCase(name);
     }
 
     @GetMapping("/{id}")

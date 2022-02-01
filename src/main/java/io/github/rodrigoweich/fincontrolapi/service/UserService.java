@@ -18,8 +18,8 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    public List<User> findUserByLastname(String lastname) {
-        return userRepository.findByLastname(lastname);
+    public List<User> findByNameContainingIgnoreCase(String lastname) {
+        return userRepository.findByNameContainingIgnoreCase(lastname);
     }
 
     public Optional<User> findUserById(Long id) {
