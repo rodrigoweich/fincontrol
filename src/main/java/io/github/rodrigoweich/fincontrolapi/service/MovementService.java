@@ -39,14 +39,7 @@ public class MovementService {
         return movementRepository.save(movement);
     }
 
-    public Optional<Movement> update(Long id, Movement movement) {
-        return movementRepository.findById(id).map(movement1 -> {
-            movement1.setMovement(movement.getMovement());
-            return movementRepository.save(movement1);
-        });
-    }
-
-    public void delete(Long id) {
+    public void deleteById(Long id) {
         movementRepository.deleteById(id);
     }
 

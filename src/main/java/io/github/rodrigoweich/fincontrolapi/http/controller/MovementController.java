@@ -42,22 +42,16 @@ public class MovementController {
         return movementService.save(movement);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void update(@PathVariable Long id, @RequestBody Movement movement) {
-        movementService.findMovementById(id).map(oldMovement -> {
-            movementService.update(id, movement);
-            return Void.TYPE;
-        }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Movement not found."));
+    public void update(@RequestBody Movement movement) {
+        movementService.save(movement);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {
-        movementService.findMovementById(id).map(movement -> {
-            movementService.delete(movement.getId());
-            return Void.TYPE;
-        }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Movement not found."));
+        movementService.deleteById(id);
     }
 
 }
