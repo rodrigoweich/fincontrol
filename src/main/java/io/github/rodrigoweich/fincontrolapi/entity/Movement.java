@@ -7,7 +7,7 @@ import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Table(name = "movements")
 @Entity
@@ -29,11 +29,11 @@ public class Movement {
 
     @CreatedDate
     @Column
-    private Date createdAt;
+    private LocalDate createdAt;
 
     @PrePersist
     public void prePersist() {
-        createdAt = new Date();
+        createdAt = LocalDate.now();
     }
 
 }

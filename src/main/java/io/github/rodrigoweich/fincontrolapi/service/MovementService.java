@@ -8,6 +8,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -18,6 +20,10 @@ public class MovementService {
 
     public Optional<Movement> findMovementById(Long id) {
         return movementRepository.findById(id);
+    }
+
+    public List<Movement> findByCreatedAtBetween(LocalDate start, LocalDate end){
+        return movementRepository.findByCreatedAtBetween(start, end);
     }
 
     public Page<Movement> list(
